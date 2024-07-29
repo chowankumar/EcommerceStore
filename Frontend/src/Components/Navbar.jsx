@@ -8,7 +8,7 @@ const Navbar = () => {
   const [active, setActive] = useState("home")
   return (
     <>
-      <div className='flex justify-between w-[80%] mx-auto p-8 items-center'>
+      <div className='flex justify-between w-[80%]  h-[80px] mx-auto p-8 items-center'>
         <div className='flex items-center gap-1'>
           <img src={logo} alt="" className='w-[50px]' />
           <p className='text-[30px] font-[500]'>SHOPPER</p>

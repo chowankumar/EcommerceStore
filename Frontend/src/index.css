@@ -2,9 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-
+*{
+    padding: 0;
+    margin: 0;
+}
 .active_navitem{
     border-bottom: 3px solid #ff4141;
     padding: 5px;
     border-radius: 10px;
+}
+.bgHero{
+    background: linear-gradient(180deg,#fde1ff,#e1ffea22 60%);
 }
