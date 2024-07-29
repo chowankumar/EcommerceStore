@@ -17,3 +17,8 @@
 .bgOffer{
     background: linear-gradient(180deg,#fde1ff 0%,#e1ffea22 60%);
 }
+.gridCollection{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
