@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.active_navitem{
+    border-bottom: 3px solid #ff4141;
+    padding: 5px;
+    border-radius: 10px;
+}
