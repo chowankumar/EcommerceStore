@@ -16,9 +16,9 @@ const Navbar = () => {
         <div>
           <ul className='hidden lg:flex gap-8 font-[500] items-center'>
             <li onClick={() => setActive("home")} className={`${active === "home" ? "active_navitem" : ""} cursor-pointer`}> <Link to="/">Shop</Link></li>
-            <li onClick={() => setActive("men")} className={`${active === "men" ? "active_navitem" : ""} cursor-pointer`}><Link to="/men">Men</Link></li>
-            <li onClick={() => setActive("women")} className={`${active === "women" ? "active_navitem" : ""} cursor-pointer`}><Link to="/women">Women</Link></li>
-            <li onClick={() => setActive("kids")} className={`${active === "kids" ? "active_navitem" : ""} cursor-pointer`}><Link to="/kid">Kid</Link></li>
+            <li onClick={() => setActive("men")} className={`${active === "men" ? "active_navitem" : ""} cursor-pointer`}><Link to="/mens">Men</Link></li>
+            <li onClick={() => setActive("women")} className={`${active === "women" ? "active_navitem" : ""} cursor-pointer`}><Link to="/womens">Women</Link></li>
+            <li onClick={() => setActive("kids")} className={`${active === "kids" ? "active_navitem" : ""} cursor-pointer`}><Link to="/kids">Kid</Link></li>
           </ul>
         </div>
 

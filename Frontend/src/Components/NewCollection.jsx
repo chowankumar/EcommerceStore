@@ -4,7 +4,7 @@ import new_collection from "../Components/assets/new_collections"
 
 const NewCollection = () => {
   return (
-    <div className='h-[100vh]  flex flex-col items-center gap-8 '>
+    <div className='mb-[100px] flex flex-col items-center gap-8 '>
 
      <div>
      <h1 className='text-[45px] font-[500] '>NEW COLLECTION</h1>
