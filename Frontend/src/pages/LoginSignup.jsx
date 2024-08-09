@@ -22,7 +22,7 @@ const LoginSignup = () => {
             placeholder='Email Address'
             className='h-[52px] w-[100%] pl-[20px] border border-[#c9c9c9] text-[#5c5c5c] text-[18px]' />
 
-          <input type="password" placeholder='password'
+          <input type="password"   placeholder='password'
             className='h-[52px] w-[100%] pl-[20px] border border-[#c9c9c9] text-[#5c5c5c] text-[18px]' />
         </div>
 
