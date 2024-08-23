@@ -11,7 +11,9 @@ const Collection = () => {
 
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
+  const[sortType,setSortType]= useState("relavent")
 
+//////////////////////////////////////////////////////////////////////////
 
   ///select the category
 
@@ -36,6 +38,7 @@ const Collection = () => {
 
   }
 
+///////////////////////////////////////////////////////////////////////////
 
   //filter the products
 
@@ -54,6 +57,10 @@ const Collection = () => {
   }
 
 
+
+
+  ////////////////////////////////////////////////////////////////////////
+
   //sort the product by price
 
   const sortProduct = () => {
@@ -63,7 +70,7 @@ const Collection = () => {
       case 'low-high':
         setFilterProducts(fpCopy.sort((a, b) => (a.price - b.price)));
         break;
-      case 'high - low':
+      case 'high-low':
         setFilterProducts(fpCopy.sort((a, b) => (b.price - a.price)));
         break;
       default:
@@ -72,6 +79,14 @@ const Collection = () => {
     }
 
   }
+
+  useEffect(() => {
+    sortProduct()
+
+  }, [sortType])
+
+
+//////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -184,7 +199,7 @@ const Collection = () => {
 
 
           {/* products sort */}
-          <select className='border-2 border-gray-300 text-sm px-2'>
+          <select className='border-2 border-gray-300 text-sm px-2' onClick={(e)=>setSortType(e.target.value)}>
             <option value="relavent">Sort by : Relavent</option>
             <option value="low-high">Sort by: Low to Hight</option>
             <option value="high-low">Sort by : High to Low</option>
