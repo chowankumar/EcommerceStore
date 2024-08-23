@@ -49,9 +49,7 @@ const Collection = () => {
   }
 
 
-  useEffect(()=>{
-       setFilterProducts(products);
-  },[]);
+ 
 
 
   useEffect(()=>{
