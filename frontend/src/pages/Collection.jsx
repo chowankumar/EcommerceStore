@@ -10,7 +10,8 @@ const Collection = () => {
   const[filterProducts,setFilterProducts] = useState([]);
 
   const[category,setCategory] = useState([]);
-  const[subcategory,setSubCategory] = useState([]);
+  const[subCategory,setSubCategory] = useState([]);
+
 
   const toggleCategory = (e)=>{
     if(category.includes(e.target.value)){
@@ -21,10 +22,31 @@ const Collection = () => {
     }
 
   }
+ 
+  const toggleSubCategory =(e)=>{
+    if(subCategory.includes(e.target.value)){
+      setSubCategory(prev=> prev.filter(item=> item !== e.target.value));
+    }
+    else{
+      setSubCategory(prev => [...prev,e.target.value])
+    }
+
+
+  }
+   
+
 
   useEffect(()=>{
        setFilterProducts(products);
-  },[])
+  },[]);
+ 
+
+  
+
+   
+
+
+   
   return (
     <div className='flex flex-col sm:flex-row gap-6 s:gap-10 pt-10 border-t'>
 
@@ -42,7 +64,8 @@ const Collection = () => {
               <input
                 className='w-3'
                 type='checkbox'
-                value={'Men'} />
+                value={'Men'}
+                onChange={toggleCategory} />
               Men
             </p>
 
@@ -50,7 +73,8 @@ const Collection = () => {
               <input
                 className='w-3'
                 type='checkbox'
-                value={'Women'} />
+                value={'Women'}
+                onChange={toggleCategory} />
               Women
             </p>
 
@@ -58,7 +82,8 @@ const Collection = () => {
               <input
                 className='w-3'
                 type='checkbox'
-                value={'Kids'} />
+                value={'Kids'}
+                onChange={toggleCategory} />
               Kids
             </p>
 
@@ -75,7 +100,8 @@ const Collection = () => {
               <input
                 className='w-3'
                 type='checkbox'
-                value={'Topwear'} />
+                value={'Topwear'}
+                onChange={toggleSubCategory} />
                 TopWear 
             </p>
 
@@ -83,7 +109,8 @@ const Collection = () => {
               <input
                 className='w-3'
                 type='checkbox'
-                value={'Bottomwear'} />
+                value={'Bottomwear'}
+                onChange={toggleSubCategory} />
                  Bottomwear
             </p>
 
@@ -91,7 +118,8 @@ const Collection = () => {
               <input
                 className='w-3'
                 type='checkbox'
-                value={'Winterwear'} />
+                value={'Winterwear'}
+                onChange={toggleSubCategory} />
                 Winterwear
                 
             </p>
