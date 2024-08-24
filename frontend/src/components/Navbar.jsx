@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
 
 const Navbar = () => {
-    const {setShowSearch} = useContext(ShopContext)
+    const { setShowSearch} = useContext(ShopContext)
 
     const [visible,setVisible] = useState(true);
     return (
