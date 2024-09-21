@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+select,input,textarea{
+    border: 1px solid #c2c2c2;
+    outline-color: #C586A5;
+}
 .active{
     background-color: #ffebf5;
     border-color: #C586A5;
