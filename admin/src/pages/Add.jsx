@@ -13,9 +13,9 @@ const Add = ({token}) => {
    const[name,setName] = useState('');
    const[description,setDescription] = useState('');
    const[price,setPrice] = useState('');
-   const[category,setCategory] = useState('');
-   const[subCategory,setSubCategory] = useState('');
-   const[bestSeller,setBestSeller] = useState('');
+   const[category,setCategory] = useState('Men');
+   const[subCategory,setSubCategory] = useState('Topwear');
+   const[bestseller,setBestSeller] = useState(false);
    const[sizes,setSizes] = useState([]);
 
 
@@ -30,7 +30,7 @@ const Add = ({token}) => {
       formData.append("price",price)
       formData.append("category",category)
       formData.append("subCategory",subCategory)
-      formData.append("bestSeller",bestSeller)
+      formData.append("bestseller",bestseller)
       formData.append("sizes",JSON.stringify(sizes))
 
      image1 && formData.append("image1",image1)
@@ -44,6 +44,8 @@ const Add = ({token}) => {
         setName('');
         setDescription('');
         setPrice('')
+        setSizes([])
+        setBestSeller(false)
         setImage1(false)
         setImage2(false)
         setImage3(false)
@@ -185,7 +187,7 @@ const Add = ({token}) => {
 
 
       <div className='flex gap-2 mt-2'>
-        <input  onChange={()=>setBestSeller(prev => !prev)} checked={bestSeller} type="checkbox" id='bestseller' />
+        <input  onChange={()=>setBestSeller(prev => !prev)} checked={bestseller} type="checkbox" id='bestseller' />
         <label htmlFor="bestSeller">Add to bstseller</label>
       </div>
 
