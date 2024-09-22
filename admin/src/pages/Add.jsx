@@ -3,7 +3,7 @@ import { assets } from '../assets/assets'
 import axios from "axios"
 import {backendUrl} from '../App'
 
-const Add = () => {
+const Add = ({token}) => {
    const[image1,setImage1] = useState(false);
    const[image2,setImage2] = useState(false);
    const[image3,setImage3] = useState(false);
@@ -37,7 +37,7 @@ const Add = () => {
      image3 && formData.append("image3",image3)
      image4 && formData.append("image4",image4)
 
-     const respose = await axios.post(backendUrl + '/api/product/add',formData);
+     const respose = await axios.post(backendUrl + '/api/product/add',formData,{headers:{token}});
      console.log(respose)
     
       
@@ -114,17 +114,17 @@ const Add = () => {
 
         <div>
           <p className='mb-2'>Product Category</p>
-          <select  onChange={(e)=>setCategory(e.target.value)}
+          <select  onChange={(e)=>setCategory(e.target.value)} value={category}
            className='w-full px-3 py-2'>
             <option value="Men">Men</option>
-            <option value="Women">Men</option>
-            <option value="Kids">Men</option>
+            <option value="Women">Women</option>
+            <option value="Kids">Kids</option>
           </select>
         </div>
 
         <div>
           <p className='mb-2'>Product SubCategory</p>
-          <select onChange={(e)=>setSubCategory(e.target.value)} className='w-full px-3 py-2'>
+          <select onChange={(e)=>setSubCategory(e.target.value)} className='w-full px-3 py-2' value={subCategory}>
             <option value="Topwear">Topwear</option>
             <option value="Bottomwear">Bottomwear</option>
             <option value="Winterwear">Winterwear</option>
