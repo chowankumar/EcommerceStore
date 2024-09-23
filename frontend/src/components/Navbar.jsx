@@ -97,9 +97,10 @@ const Navbar = () => {
 
             </div>
 
+
             {/* menu for the small screens */}
 
-            <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transiton-all ${visible ? 'w-full':'w-0'}`}>
+            <div className={` md:hidden absolute top-0 right-0 bottom-0 overflow-hidden bg-white transiton-all ${visible ? 'w-full':'w-0'}`}>
             <div className="flex flex-col text-gray-600"> 
                 <div onClick={()=> setVisible(false)} className='flex items-center gap-4 p-3 cursor-pointer'>
                     <img 

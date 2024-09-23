@@ -10,14 +10,12 @@ orderRouter.post('/status',adminAuth,updateStatus);
 
 
 orderRouter.post('/place',authUser,placeOrder);
-orderRouter.post('/stripe',adminAuth,placeOrderStripe);
-orderRouter.post('/razorpay',adminAuth,placeOrderRazorpay);
+orderRouter.post('/stripe',authUser,placeOrderStripe);
+orderRouter.post('/razorpay',authUser,placeOrderRazorpay);
 
 
 orderRouter.post('/userorders',authUser,userOrder);
 
-
-orderRouter.post('/userorders',authUser,userOrder)
 
 
 export default orderRouter

@@ -1,6 +1,6 @@
 import orderModel from "../models/orderModel.js"
 import userModel from '../models/userModel.js'
-
+//11:27:00
 const placeOrder = async(req,res)=>{
     try {
         const {userId,items,amount,address} = req.body;
@@ -43,9 +43,14 @@ const placeOrderRazorpay = async(req,res)=>{
 
 
 const allOrders = async(req,res)=>{
+   
+    
+}
+
+
+const userOrder = async(req,res)=>{
     try {
         const {userId} = req.body;
-
         const orders = await orderModel.find({userId});
         res.json({success:true,orders})
     } catch (error) {
@@ -53,11 +58,6 @@ const allOrders = async(req,res)=>{
         res.json({success:false,message:error.message})
         
     }
-    
-}
-
-
-const userOrder = async(req,res)=>{
     
 }
 
