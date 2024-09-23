@@ -1,6 +1,8 @@
 import orderModel from "../models/orderModel.js"
 import userModel from '../models/userModel.js'
-//11:27:00
+import Stripe from 'stripe';
+
+const strip = new Stripe(process.env.STRIPE_SECRET_KEY)
 const placeOrder = async (req, res) => {
     try {
         const { userId, items, amount, address } = req.body;
