@@ -5,15 +5,15 @@ import Title from "./../components/Title"
 import ProductItem from '../components/ProductItem'
 
 const Collection = () => {
-  const { products, search,showSearch } = useContext(ShopContext)
+  const { products, search, showSearch } = useContext(ShopContext)
   const [showFilter, setShowFilter] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
 
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
-  const[sortType,setSortType]= useState("relavent")
+  const [sortType, setSortType] = useState("relavent")
 
-/////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////
 
   ///select the category
 
@@ -38,7 +38,7 @@ const Collection = () => {
 
   }
 
-/////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////
 
   //filter the products
 
@@ -46,7 +46,7 @@ const Collection = () => {
     let productCopy = products.slice();
 
 
-    if(showSearch && search){
+    if (showSearch && search) {
       productCopy = productCopy.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
     }
 
@@ -61,11 +61,11 @@ const Collection = () => {
     setFilterProducts(productCopy);
   }
 
-  
+
   useEffect(() => {
     applyFilter();
 
-  }, [category, subCategory,search,showSearch,products])
+  }, [category, subCategory, search, showSearch, products])
 
 
 
@@ -97,7 +97,7 @@ const Collection = () => {
   }, [sortType])
 
 
-//////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -121,7 +121,7 @@ const Collection = () => {
 
         <div className={`border border-gray-300 pl-5 py-3 mt-6 ${showFilter ? "" : "hidden"} sm:block`}>
           <p className='mb-3 text-sm font-medium'>CATERORIES</p>
-          <div className='flex flex-col gap-2 text-sm font-light text-gray-700 text-[18px]'>
+          <div className='flex flex-col gap-2 text-sm font-light text-gray-700 text-[16px]'>
             <p className='flex gap-2'>
               <input
                 className='w-3'
@@ -129,8 +129,8 @@ const Collection = () => {
                 value={'Men'}
                 onChange={toggleCategory} />
               <p className='flex justify-between w-[50%] gap-2 '>
-              Men 
-              <img src={assets.man} alt="" className='w-[18px]'/>
+                Men
+                <img src={assets.man} alt="" className='w-[18px]' />
               </p>
             </p>
 
@@ -141,8 +141,8 @@ const Collection = () => {
                 value={'Women'}
                 onChange={toggleCategory} />
               <p className='flex gap-2 justify-between w-[50%] '>
-              Women 
-              <img src={assets.woman} alt="" className='w-[18px]'/>
+                Women
+                <img src={assets.woman} alt="" className='w-[18px]' />
               </p>
             </p>
 
@@ -152,9 +152,9 @@ const Collection = () => {
                 type='checkbox'
                 value={'Kids'}
                 onChange={toggleCategory} />
-                <p className='flex justify-between w-[50%] gap-2 '>
-              KIDS
-              <img src={assets.boy} alt="" className='w-[18px]'/>
+              <p className='flex justify-between w-[50%] gap-2 '>
+                KIDS
+                <img src={assets.boy} alt="" className='w-[18px]' />
               </p>
             </p>
 
@@ -166,14 +166,17 @@ const Collection = () => {
 
         <div className={`border border-gray-300 pl-5 py-3 my-5 ${showFilter ? "" : "hidden"} sm:block`}>
           <p className='mb-3 text-sm font-medium'>TYPE</p>
-          <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
+          <div className='flex flex-col gap-2 text-sm font-light text-gray-700 text-[16px]'>
             <p className='flex gap-2'>
               <input
                 className='w-3'
                 type='checkbox'
                 value={'Topwear'}
                 onChange={toggleSubCategory} />
-              TopWear
+              <p className='flex justify-between w-[50%] gap-2 '>
+                Topwear
+                <img src={assets.top} alt="" className='w-[18px]' />
+              </p>
             </p>
 
             <p className='flex gap-2'>
@@ -182,7 +185,11 @@ const Collection = () => {
                 type='checkbox'
                 value={'Bottomwear'}
                 onChange={toggleSubCategory} />
-              Bottomwear
+              <p className='flex justify-between w-[50%] gap-2 '>
+                Bottomwear
+                <img src={assets.bottom} alt="" className='w-[18px]' />
+              </p>
+
             </p>
 
             <p className='flex gap-2'>
@@ -191,7 +198,11 @@ const Collection = () => {
                 type='checkbox'
                 value={'Winterwear'}
                 onChange={toggleSubCategory} />
-              Winterwear
+              <p className='flex justify-between w-[50%] gap-2 '>
+                Winterwear
+                <img src={assets.winter} alt="" className='w-[18px]' />
+              </p>
+
 
             </p>
 
@@ -215,7 +226,7 @@ const Collection = () => {
 
 
           {/* products sort */}
-          <select className='border-2 border-gray-300 text-sm px-2' onClick={(e)=>setSortType(e.target.value)}>
+          <select className='border-2 border-gray-300 text-sm px-2' onClick={(e) => setSortType(e.target.value)}>
             <option value="relavent">Sort by : Relavent</option>
             <option value="low-high">Sort by: Low to Hight</option>
             <option value="high-low">Sort by : High to Low</option>

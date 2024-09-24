@@ -76,6 +76,9 @@ import cross_icon from './cross_icon.png'
 import woman from "./woman.png"
 import man from './man.png'
 import boy from './boy.png'
+import winter from './winter.png'
+import top from './top.png'
+import bottom from './bottom.png'
 export const assets = {
     logo,
     hero_img,
@@ -97,7 +100,10 @@ export const assets = {
     cross_icon,
     woman,
     man,
-    boy
+    boy,
+    top,
+    winter,
+    bottom
 }
 
 export const products = [
