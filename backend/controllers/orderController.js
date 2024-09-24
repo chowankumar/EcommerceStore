@@ -172,4 +172,4 @@ const updateStatus = async (req, res) => {
 }
 
 
-export { placeOrder, placeOrderRazorpay, placeOrderStripe, allOrders, userOrder, updateStatus }
+export { placeOrder, placeOrderRazorpay, placeOrderStripe,verifySripe, allOrders, userOrder, updateStatus }
