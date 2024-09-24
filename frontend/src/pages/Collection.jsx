@@ -121,14 +121,17 @@ const Collection = () => {
 
         <div className={`border border-gray-300 pl-5 py-3 mt-6 ${showFilter ? "" : "hidden"} sm:block`}>
           <p className='mb-3 text-sm font-medium'>CATERORIES</p>
-          <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
+          <div className='flex flex-col gap-2 text-sm font-light text-gray-700 text-[18px]'>
             <p className='flex gap-2'>
               <input
                 className='w-3'
                 type='checkbox'
                 value={'Men'}
                 onChange={toggleCategory} />
-              Men
+              <p className='flex justify-between w-[50%] gap-2 '>
+              Men 
+              <img src={assets.man} alt="" className='w-[18px]'/>
+              </p>
             </p>
 
             <p className='flex gap-2'>
@@ -137,7 +140,10 @@ const Collection = () => {
                 type='checkbox'
                 value={'Women'}
                 onChange={toggleCategory} />
-              Women
+              <p className='flex gap-2 justify-between w-[50%] '>
+              Women 
+              <img src={assets.woman} alt="" className='w-[18px]'/>
+              </p>
             </p>
 
             <p className='flex gap-2'>
@@ -146,7 +152,10 @@ const Collection = () => {
                 type='checkbox'
                 value={'Kids'}
                 onChange={toggleCategory} />
-              Kids
+                <p className='flex justify-between w-[50%] gap-2 '>
+              KIDS
+              <img src={assets.boy} alt="" className='w-[18px]'/>
+              </p>
             </p>
 
           </div>
