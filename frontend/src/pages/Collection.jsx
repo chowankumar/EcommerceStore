@@ -13,9 +13,9 @@ const Collection = () => {
   const [subCategory, setSubCategory] = useState([]);
   const [sortType, setSortType] = useState("relavent")
 
-  /////////////////////////////////////////////////////////////
+   
 
-  ///select the category
+  /////////////////////select the category and subcategory////////////////////
 
   const toggleCategory = (e) => {
     if (category.includes(e.target.value)) {
@@ -26,6 +26,7 @@ const Collection = () => {
     }
 
   }
+
 
   const toggleSubCategory = (e) => {
     if (subCategory.includes(e.target.value)) {
@@ -38,9 +39,7 @@ const Collection = () => {
 
   }
 
-  /////////////////////////////////////////////////////////////
-
-  //filter the products
+  /////////////////////////filter the products//////////////////////////////////
 
   const applyFilter = () => {
     let productCopy = products.slice();
@@ -48,6 +47,7 @@ const Collection = () => {
 
     if (showSearch && search) {
       productCopy = productCopy.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
+       
     }
 
     if (category.length > 0) {
@@ -64,15 +64,14 @@ const Collection = () => {
 
   useEffect(() => {
     applyFilter();
-
   }, [category, subCategory, search, showSearch, products])
 
 
 
 
-  ////////////////////////////////////////////////////////////
+  
 
-  //sort the product by price
+///////////////////sort the product by price ///////////////////////////////////
 
   const sortProduct = () => {
     let fpCopy = filterProducts.slice();
@@ -97,17 +96,7 @@ const Collection = () => {
   }, [sortType])
 
 
-  //////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
+  
 
   return (
     <div className='flex flex-col sm:flex-row gap-6 s:gap-10 pt-10 border-t'>
