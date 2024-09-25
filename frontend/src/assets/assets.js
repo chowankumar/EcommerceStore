@@ -55,6 +55,7 @@ import p_img51 from './p_img51.png'
 import p_img52 from './p_img52.png'
 
 
+
 import logo from './logo.png'
 import hero_img from './hero_img.png'
 import cart_icon from './cart_icon.png'
@@ -79,6 +80,7 @@ import boy from './boy.png'
 import winter from './winter.png'
 import top from './top.png'
 import bottom from './bottom.png'
+import pattern from './pattern.svg'
 export const assets = {
     logo,
     hero_img,
@@ -103,7 +105,8 @@ export const assets = {
     boy,
     top,
     winter,
-    bottom
+    bottom,
+    pattern
 }
 
 export const products = [

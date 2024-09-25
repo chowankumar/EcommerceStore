@@ -1,18 +1,15 @@
 import React from 'react';
+import {assets} from './../assets/assets'
 
 const Title = ({ text1, text2 }) => {
   return (
-    <div className='inline-flex gap-4 items-center mb-3'>
-      <p className='text-gray-500 text-[35px]'> 
-        {text1}{' '}
-        <span className='text-gray-800 font-semibold text-[30px]'>  
-          {text2}
-        </span>
+    <div className='inline-flex gap-4 items-center mb-[50px]'>
+      <p className='about-title relative'> 
+          <h1 className='font-[600] text-[50px]'> {text1}{''} {text2} </h1>  
+          <img className='absolute right-0 top-0 z-[-1]' src={assets.pattern} alt="" />
       </p>
 
-      <div className='relative w-16 sm:w-24 h-[2px] bg-gradient-to-r from-gray-400 to-gray-800 animate-slide'>
-        <div className='absolute inset-0 w-8 h-full bg-gradient-to-r from-indigo-500 to-indigo-800'></div>
-      </div>
+     
     </div>
   );
 };
