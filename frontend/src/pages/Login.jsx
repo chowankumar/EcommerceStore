@@ -16,7 +16,7 @@ const Login = () => {
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     try {
-      if (currentState === 'Sign') {
+      if (currentState === 'Sign Up') {
         const formData = new FormData();
         formData.append('name', name);
         formData.append('email', email);

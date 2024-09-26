@@ -5,8 +5,10 @@ import jwt from 'jsonwebtoken'
 import { v2 as cloudinary } from 'cloudinary'
 
 const createToken = (id) => {
-    return jwt.sign({id}, process.env.JWT_SECRET);
+    return jwt.sign({id},process.env.JWT_SECRET);
 }
+
+
 
 const loginUser = async (req, res) => {
     try {
@@ -90,6 +92,19 @@ const registerUser = async (req, res) => {
 
 }
 
+const userData = async (req, res) => {
+    try {
+        const {userId} = req.body;
+        const user = await userModel.findOne({_id:userId });
+        res.json({success:true,user})
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message })
+
+    }
+
+}
+
 const adminLogin = async (req,res) => {
     try {
         const {email,password} = req.body;
@@ -112,4 +127,4 @@ const adminLogin = async (req,res) => {
 
 }
 
-export { loginUser, registerUser, adminLogin }
+export { loginUser, registerUser, adminLogin , userData }
