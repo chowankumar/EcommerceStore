@@ -2,6 +2,7 @@ import userModel from "../models/userModel.js"
 import validator from 'validator'
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken'
+import { v2 as cloudinary } from 'cloudinary'
 
 const createToken = (id) => {
     return jwt.sign({id}, process.env.JWT_SECRET);
@@ -36,7 +37,8 @@ const loginUser = async (req, res) => {
 const registerUser = async (req, res) => {
     try {
         const { name, email, password } = req.body;
-
+           
+      
         //checking the user already exist 
         const exists = await userModel.findOne({ email });
         if (exists) {
@@ -56,10 +58,25 @@ const registerUser = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt)
 
+        /////////crate the profile url////////
+
+        let profileImageUrl = '';
+        if (req.file) {
+            const result = await cloudinary.uploader.upload(req.file.path, {
+                folder: 'profile_pictures',
+            });
+            profileImageUrl = result.secure_url; 
+        } else {
+            return res.json({ success: false, message: "Profile image is required" });
+        }
+
+        console.log(profileImageUrl)
+
         const newUser = new userModel({
             name,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            profile:profileImageUrl,
         })
         const user = await newUser.save();
         const token = createToken(user._id);
