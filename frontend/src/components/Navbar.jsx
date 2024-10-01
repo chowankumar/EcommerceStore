@@ -6,11 +6,10 @@ import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 
 const Navbar = () => {
-    const { setShowSearch, getCartCount, navigate, backendUrl, token, setToken, setCartItems } = useContext(ShopContext);
+    const { setShowSearch, getCartCount, navigate, token, setToken, setCartItems,userData} = useContext(ShopContext);
     const [visible, setVisible] = useState(true);
-    const [userId, setUserId] = useState('');
-    const [userData, setUserData] = useState({});
-    const [loading, setLoading] = useState(true); // Loading state
+     
+     
 
     const logout = () => {
         navigate('/login');
@@ -20,30 +19,10 @@ const Navbar = () => {
         setLoading(true);
     }
 
-    const fetchUserData = async (token) => {
-        if (token) {
-            try {
-                const decoded = jwtDecode(token);
-                const id = decoded.id;
-                setUserId(id);
+    
 
-                const response = await axios.post(backendUrl + '/api/user/userData', { userId: id });
-                if (response.data.success) {
-                    setUserData(response.data.user);
-                }
-            } catch (error) {
-                console.error('Failed to fetch user data:', error);
-            } finally {
-                setLoading(false); // Set loading to false after the API call
-            }
-        } else {
-            setLoading(false); // Set loading to false if there's no token
-        }
-    }
-
-    useEffect(() => {
-        fetchUserData(token);
-    }, [token]);
+   
+    
 
     return (
         <div className='flex items-center justify-between py-5 font-medium'>
@@ -86,8 +65,8 @@ const Navbar = () => {
                 <div className='group relative'>
                     <img
                         onClick={() => token ? null : navigate('/login')}
-                        src={loading ? assets.default_profile : (token ? userData.profile : assets.profile_icon)}
-                        className='w-8 cursor-pointer object-cover rounded-full'
+                        src={userData.profile}
+                        className='w-8 cursor-pointer object-co rounded-full'
                         alt="" />
 
                     {token && (

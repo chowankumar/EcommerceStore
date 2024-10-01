@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { ShopContext } from '../context/ShopContext';
+import  {assets} from "./../assets/assets"
 
 const Login = () => {
   const { token, setToken, backendUrl, navigate } = useContext(ShopContext);
@@ -10,8 +11,8 @@ const Login = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [profileImage, setProfileImage] = useState(null); 
-  const [profileImagePreview, setProfileImagePreview] = useState(null); 
+  const [image, setImage] = useState(false);
+
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
@@ -21,7 +22,7 @@ const Login = () => {
         formData.append('name', name);
         formData.append('email', email);
         formData.append('password', password);
-        formData.append('profile', profileImage);
+        formData.append('image',image);
 
         const response = await axios.post(backendUrl + '/api/user/register', formData);
 
@@ -34,8 +35,7 @@ const Login = () => {
         setName('');
         setEmail('');
         setPassword('');
-        setProfileImage(null);
-        setProfileImagePreview(null);
+        setImage('')
       } else {
         const response = await axios.post(backendUrl + '/api/user/login', { email, password });
         if (response.data.success) {
@@ -61,17 +61,17 @@ const Login = () => {
   }, [token]);
 
 
-  const handleProfileImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setProfileImage(file);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProfileImagePreview(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  // const handleProfileImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     setProfileImage(file);
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       setProfileImagePreview(reader.result);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   return (
     <form onSubmit={onSubmitHandler} className='flex flex-col items-center w-[90%] sm:max-w-96 mx-auto  gap-4 text-gray-700 border border-gray-400 px-6 py-6 shadow-lg rounded-lg'>
@@ -83,26 +83,26 @@ const Login = () => {
       {currentState === 'Login' ? '' : (
         <>
          
-          <div className="w-32 h-32 rounded-full border border-gray-800 relative flex items-center justify-center overflow-hidden">
+     
             
-            {profileImagePreview ? (
-              <img
-                src={profileImagePreview}
-                alt="Profile Preview"
-                className="w-full h-full object-contain"
-              />
-            ) : (
-              <p className="text-sm text-gray-500">Upload Image</p>
-            )}
+          
 
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleProfileImageChange}
-              className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
-              name="profile"
-            />
-          </div>
+          <div className='flex items-center gap-4 mb-8 text-gray-500'>
+          <label htmlFor="doc-img">
+
+            <img
+               src={image ? URL.createObjectURL(image) : assets.upload}
+              className='w-24 bg-gray-100 rounded-full cursor-pointer object-cover' />
+          </label>
+
+          <input
+            onChange={(e) => setImage(e.target.files[0])}
+            type="file"
+            id='doc-img'
+            hidden />
+          
+        </div>
+        
 
 
           <input

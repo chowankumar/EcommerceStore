@@ -39,6 +39,7 @@ const loginUser = async (req, res) => {
 const registerUser = async (req, res) => {
     try {
         const { name, email, password } = req.body;
+        const imageFile = req.file;
            
       
         //checking the user already exist 
@@ -62,23 +63,16 @@ const registerUser = async (req, res) => {
 
         /////////crate the profile url////////
 
-        let profileImageUrl = '';
-        if (req.file) {
-            const result = await cloudinary.uploader.upload(req.file.path, {
-                folder: 'profile_pictures',
-            });
-            profileImageUrl = result.secure_url; 
-        } else {
-            return res.json({ success: false, message: "Profile image is required" });
-        }
+        const imageUpload = await cloudinary.uploader.upload(imageFile.path,{resource_type:"image"})
+        const imageUrl = imageUpload.secure_url;
 
-        console.log(profileImageUrl)
+         
 
         const newUser = new userModel({
             name,
             email,
             password: hashedPassword,
-            profile:profileImageUrl,
+            profile:imageUrl,
         })
         const user = await newUser.save();
         const token = createToken(user._id);
@@ -92,10 +86,10 @@ const registerUser = async (req, res) => {
 
 }
 
-const userData = async (req, res) => {
+const fetchUserData = async (req, res) => {
     try {
         const {userId} = req.body;
-        const user = await userModel.findOne({_id:userId });
+        const user = await userModel.findOne({_id:userId});
         res.json({success:true,user})
     } catch (error) {
         console.log(error);
@@ -127,4 +121,4 @@ const adminLogin = async (req,res) => {
 
 }
 
-export { loginUser, registerUser, adminLogin , userData }
+export { loginUser, registerUser, adminLogin ,fetchUserData }

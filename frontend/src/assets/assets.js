@@ -81,8 +81,10 @@ import winter from './winter.png'
 import top from './top.png'
 import bottom from './bottom.png'
 import pattern from './pattern.svg'
+import upload from './upload_area.svg'
 export const assets = {
     logo,
+    upload,
     hero_img,
     cart_icon,
     dropdown_icon,
