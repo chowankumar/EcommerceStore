@@ -65,7 +65,7 @@ const Navbar = () => {
                 <div className='group relative'>
                     <img
                         onClick={() => token ? null : navigate('/login')}
-                        src={userData.profile}
+                        src={userData?userData.profile:assets.upload}
                         className='w-8 cursor-pointer object-co rounded-full'
                         alt="" />
 
