@@ -66,7 +66,7 @@ const Navbar = () => {
                     <img
                         onClick={() => token ? null : navigate('/login')}
                         src={userData?userData.profile:assets.upload}
-                        className='w-8 cursor-pointer object-co rounded-full'
+                        className='w-8 cursor-pointer object-cover rounded-full border border-black'
                         alt="" />
 
                     {token && (
